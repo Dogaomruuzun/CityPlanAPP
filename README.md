@@ -2,7 +2,6 @@
 
 👤 Student Info
 - Name: Doğa Ömrüuzun
-- Student Number: 210201027
 - Course: SENG 324 – Software Design Patterns
 - Term: Spring 2025
 
