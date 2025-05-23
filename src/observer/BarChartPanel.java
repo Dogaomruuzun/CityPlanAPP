@@ -16,9 +16,9 @@ public class BarChartPanel extends JPanel implements Observer {
     private List<City> cities;
 
     public BarChartPanel() {
-        cities = CityRepository.getInstance().getCities();
+        cities = CityRepository.getInstance().getCities(); //With the method, it turns the temperatures of these cities into graph data
         dataset = new DefaultCategoryDataset();
-        updateData(); // ilk veri yüklemesi
+        updateData();
 
         JFreeChart chart = ChartFactory.createBarChart(
                 "City Temperatures",
@@ -34,7 +34,7 @@ public class BarChartPanel extends JPanel implements Observer {
 
     @Override
     public void update() {
-        updateData(); // yeni verilerle dataset güncelleniyor
+        updateData();
     }
 
     private void updateData() {

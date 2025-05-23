@@ -9,7 +9,7 @@ public class SortByArea implements CitySortStrategy {
     @Override
     public List<City> sort(List<City> cities) {
         return cities.stream()
-                .sorted(Comparator.comparing(City::getArea)) // Küçükten büyüğe
+                .sorted(Comparator.comparing(City::getArea))
                 .collect(Collectors.toList());
     }
 }

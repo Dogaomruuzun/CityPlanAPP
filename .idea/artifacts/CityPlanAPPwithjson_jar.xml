@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CityPlanAPPwithjson:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CityPlanAPPwithjson_jar</output-path>
+    <root id="archive" name="CityPlanAPP.jar">
+      <element id="module-output" name="CityPlanAPP" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/json-simple-1.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jfreechart-1.5.5.jar" path-in-jar="/" />
+      <element id="file-copy" path="$PROJECT_DIR$/resources/cities.json" />
+      <element id="dir-copy" path="$PROJECT_DIR$/resources" />
+    </root>
+  </artifact>
+</component>

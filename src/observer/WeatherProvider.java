@@ -18,31 +18,31 @@ public class WeatherProvider extends Thread implements Subject {
     public void run() {
         while (true) {
             try {
-                Thread.sleep(3000); // 3 saniye bekle
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 break;
             }
 
             for (City city : cities) {
-                double newTemp = 10 + random.nextInt(25); // 10-35 derece arası
+                double newTemp = 10 + random.nextInt(25);
                 String newWeather = weatherStates[random.nextInt(weatherStates.length)];
                 city.setCurrentTemperature(newTemp);
                 city.setCurrentWeatherState(newWeather);
             }
 
-            notifyObservers(); // herkese bildir
+            notifyObservers();
         }
     }
 
     @Override
     public void registerObserver(Observer o) {
         observers.add(o);
-    }
+    }  //Adds a new observer to the system
 
     @Override
     public void removeObserver(Observer o) {
         observers.remove(o);
-    }
+    } //Removes a previously added observer from the system.
 
     @Override
     public void notifyObservers() {

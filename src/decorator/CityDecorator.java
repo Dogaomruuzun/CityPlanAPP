@@ -1,6 +1,6 @@
 package decorator;
 
-public abstract class CityDecorator implements CityComponent {
+public abstract class CityDecorator implements CityComponent { //wrap
     protected CityComponent decoratedCity;
 
     public CityDecorator(CityComponent decoratedCity) {

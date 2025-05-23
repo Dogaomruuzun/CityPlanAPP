@@ -34,26 +34,25 @@ public class CityRepository {
     private void loadCitiesFromJson() {
         JSONParser parser = new JSONParser();
         try {
-            FileReader reader;
             String json;
-            // .jar çalışıyorsa aynı dizindeki cities.json'u dene
-//            if (new File("cities.json").exists()) {
-//                reader = new FileReader("cities.json");
-//            } else {
-//                // IntelliJ için src içindeki dosyayı dene
-//                reader = new FileReader("src/cities.json");
-//            }
-            InputStream inputStream = MainUI.class.getResourceAsStream("/cities.json");
-             try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8))) {
-                    StringBuilder sb = new StringBuilder();
-                    String line;
-                    while((line=br.readLine()) !=null) {
-                        sb.append(line);
-                    }
-                    json = sb.toString();
-             }
-            JSONArray cityArray;
-            cityArray = new JSONArray(json);
+
+            InputStream inputStream = MainUI.class.getResourceAsStream("/resources/cities.json");
+            if (inputStream == null) {
+                throw new FileNotFoundException("cities.json not found in resources.");
+            }
+
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+                }
+                json = sb.toString();
+            }
+
+            // ✅ Use JSONParser to parse string into JSONArray
+            JSONArray cityArray = (JSONArray) parser.parse(json);
+
             for (Object obj : cityArray) {
                 JSONObject cityJson = (JSONObject) obj;
                 String name = (String) cityJson.get("name");
@@ -65,9 +64,10 @@ public class CityRepository {
                 City city = new City(name, (int) population, area, temperature, weather);
                 cities.add(city);
             }
-            reader.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }
